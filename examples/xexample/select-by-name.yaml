@@ -1,0 +1,7 @@
+apiVersion: upbound.io/v1
+kind: XExample
+metadata:
+  name: passing-context
+spec:
+  selector:
+    name: test

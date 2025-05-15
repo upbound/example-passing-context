@@ -1,0 +1,25 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: xexamples.upbound.io
+spec:
+  compositeTypeRef:
+    apiVersion: upbound.io/v1
+    kind: XExample
+  mode: Pipeline
+  pipeline:
+  - functionRef:
+      name: crossplane-by-example-example-passing-contextvpclookup
+    credentials:
+    - name: aws
+      source: Secret
+      secretRef:
+        name: aws-credentials
+        namespace: crossplane-system
+    step: vpclookup
+  - functionRef:
+      name: crossplane-by-example-example-passing-contextwritestatus
+    step: writestatus
+  - functionRef:
+      name: crossplane-contrib-function-auto-ready
+    step: crossplane-contrib-function-auto-ready

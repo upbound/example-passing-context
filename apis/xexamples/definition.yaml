@@ -1,0 +1,39 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: xexamples.upbound.io
+spec:
+  group: upbound.io
+  names:
+    categories:
+    - crossplane
+    kind: XExample
+    plural: xexamples
+  versions:
+  - name: v1
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        description: XExample is the Schema for the XExample API.
+        properties:
+          spec:
+            description: XExampleSpec defines the desired state of XExample.
+            properties:
+              selector:
+                properties:
+                  name:
+                    description: The name of the VPC to look up
+                    type: string
+                type: object
+            type: object
+          status:
+            description: XExampleStatus defines the observed state of XExample.
+            properties:
+              vpcId:
+                description: ID of matching VPC
+                type: string
+            type: object
+        required:
+        - spec
+        type: object
+    served: true
