@@ -18,8 +18,8 @@ spec:
         namespace: crossplane-system
     step: vpclookup
   - functionRef:
-      name: crossplane-by-example-example-passing-contextwritestatus
-    step: writestatus
+      name: crossplane-by-example-example-passing-contextdeploysubnet
+    step: deploysubnet
   - functionRef:
       name: crossplane-contrib-function-auto-ready
     step: crossplane-contrib-function-auto-ready
