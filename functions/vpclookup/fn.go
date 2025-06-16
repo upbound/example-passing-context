@@ -51,6 +51,11 @@ func (f *Function) RunFunction(_ context.Context, req *fnv1.RunFunctionRequest) 
 		return rsp, nil
 	}
 
+	// if VPC ID already set, return
+	if xr.Status.VpcID != nil {
+		return rsp, nil
+	}
+
 	// Set up the AWS client library
 	// First, pull back the credentials
 	creds, err := request.GetCredentials(req, "aws")
